@@ -1,20 +1,27 @@
 library(dplyr)
 library(ggplot2)
 
-f <- list.files("../gfsynopsis-2021/report/data-cache-update2/", full.names = TRUE) # will make reproducible...
-f <- f[!grepl("cpue", f)]
-f <- f[!grepl("iphc", f)]
-f
+dir.create("figs", showWarnings = FALSE)
+dir.create("data-generated", showWarnings = FALSE)
 
-d <- list()
-for (i in seq_along(f)) {
-  cat(f[i], "\n")
-  d[[i]] <- readRDS(f[i])$commercial_samples
+if (!file.exists("data-generated/sampling-summary.rds")) {
+  f <- list.files("../gfsynopsis-2021/report/data-cache-update2/", full.names = TRUE) # will make reproducible...
+  f <- f[!grepl("cpue", f)]
+  f <- f[!grepl("iphc", f)]
+  d <- list()
+  for (i in seq_along(f)) {
+    cat(f[i], "\n")
+    d[[i]] <- readRDS(f[i])$commercial_samples
+  }
+  d <- bind_rows(d)
+  d_tidy <- gfplot::tidy_sample_avail(d)
+  d_tidy <- filter(d_tidy, year >= 1996, year <= 2020,
+    n > 0, !is.na(species_common_name))
+  saveRDS(d_tidy, "data-generated/sampling-summary.rds")
+} else {
+  d_tidy <- readRDS("data-generated/sampling-summary.rds")
 }
-d <- bind_rows(d)
-d_tidy <- gfplot::tidy_sample_avail(d)
-d_tidy <- filter(d_tidy, year >= 1996, year <= 2020,
-  n > 0, !is.na(species_common_name))
+
 d_tidy$species_common_name <- stringr::str_to_title(d_tidy$species_common_name)
 d_tidy <- filter(d_tidy, species_common_name != "Pacific Halibut")
 d_tidy <- filter(d_tidy, species_common_name != "Pacific Hake")
@@ -42,7 +49,6 @@ make_sample_plot <- function(dat) {
     guides(fill = guide_colourbar())
 }
 
-dir.create("figs", showWarnings = FALSE)
 WIDTH <- 9
 HEIGHT <- 8
 DPI <- 220
