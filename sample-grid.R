@@ -33,7 +33,8 @@ make_sample_plot <- function(dat) {
   half_line <- 11
   ggplot(dat, aes(year, 1, fill = n, colour = n)) + geom_tile() +
     facet_wrap(~species_common_name, ncol = 6L, drop = FALSE) +
-    gfplot::theme_pbs() +
+    # gfplot::theme_pbs() +
+    ggsidekick::theme_sleek() + # remotes::install_github("seananderson/ggsidekick")
     scale_fill_viridis_c(trans = "log10") +
     scale_colour_viridis_c(trans = "log10") +
     # scale_fill_distiller(trans = "log10", palette = "Blues", direction = 1) +
