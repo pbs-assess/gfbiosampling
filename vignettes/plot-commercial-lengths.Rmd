@@ -1,0 +1,46 @@
+---
+title: "plot-commercial-lengths"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plot-commercial-lengths}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gfplot)
+library(magrittr)
+source("../R/tidy-comps.R")
+source("../R/plot-commercial-lengths.R")
+
+```
+
+# Plot commercial lengths
+```{r plot-lengths}
+
+if (FALSE) {
+  # Read Pacific Ocean Perch data
+  pop <- readr::read_rds("~/data-cache-april-2022/pacific-ocean-perch.rds")
+  pop_comm_samples <- pop$commercial_samples
+  # Tidy lengths by areas
+  pop_lengths <- tidy_lengths_by_areas_raw(
+    pop_comm_samples,
+    sample_type = "commercial",
+    bin_size = 2,
+    year_range = 2003:2021
+  )
+  # Plot length frequencies
+  p1 <- plot_commercial_lengths(pop_lengths)
+  p1
+  
+}
+
+
+```

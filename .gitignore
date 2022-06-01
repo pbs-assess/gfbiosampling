@@ -25,7 +25,6 @@ _targets/
 *.so
 
 # Figures
-figs/
 *.png
 *.pdf
 
