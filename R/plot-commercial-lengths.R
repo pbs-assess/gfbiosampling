@@ -84,21 +84,21 @@ plot_commercial_lengths <- function (data,
     p1 <- p1 +
       ggplot2::facet_grid(
         forcats::fct_rev(as.factor(year)) ~ area,
-        labeller = ggplot2::labeller(.rows = is_even),
+        labeller = ggplot2::labeller(.rows = gfplot:::is_even),
         drop = FALSE
       )
   } else if (show_year == "odd") {
     p1 <- p1 +
       ggplot2::facet_grid(
         forcats::fct_rev(as.factor(year)) ~ area,
-        labeller = ggplot2::labeller(.rows = is_odd),
+        labeller = ggplot2::labeller(.rows = gfplot:::is_odd),
         drop = FALSE
       )
   } else {
     p1 <- p1 +
       facet_grid(
         forcats::fct_rev(as.factor(year)) ~ area,
-        labeller = ggplot2::labeller(.rows = is_all),
+        labeller = ggplot2::labeller(.rows = gfplot:::is_all),
         drop = FALSE
       )
   }
@@ -106,18 +106,4 @@ plot_commercial_lengths <- function (data,
   # Return plot ----------------------------------------------------------------
 
   return(p1)
-}
-
-is_even <- function(x) {
-  ie <- as.numeric(as.character(x)) %% 2 == 0
-  ifelse(ie, x, "")
-}
-
-is_odd <- function(x) {
-  ie <- as.numeric(as.character(x)) %% 2 == 1
-  ifelse(ie, x, "")
-}
-
-is_all <- function(x) {
-  x
 }

@@ -1,0 +1,45 @@
+---
+title: "plot-commercial-ages"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plot-commercial-ages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gfplot)
+library(magrittr)
+source("../R/tidy-comps.R")
+source("../R/plot-commercial-ages.R")
+
+```
+
+# Plot commercial ages
+```{r plot-ages}
+
+if (FALSE) {
+  # Read Pacific Ocean Perch data
+  pop <- readr::read_rds("~/data-cache-april-2022/pacific-ocean-perch.rds")
+  pop_comm_samples <- pop$commercial_samples
+  # Tidy ages by areas
+  pop_ages <- tidy_ages_by_areas_raw(
+    pop_comm_samples,
+    sample_type = "commercial",
+    year_range = 2003:2021
+  )
+  # Plot length frequencies
+  p1 <- plot_commercial_ages(pop_ages)
+  p1
+  
+}
+
+
+```
