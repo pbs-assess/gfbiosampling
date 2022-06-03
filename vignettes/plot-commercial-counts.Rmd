@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(gfplot)
 library(magrittr)
 source("../R/tidy-counts.R")
-source("../R/plot-commercial-counts")
+source("../R/plot-commercial-counts.R")
 
 ```
 
@@ -35,8 +35,8 @@ if (FALSE) {
     years = 2003:2021
   )
   # Plot counts
-  # p1 <- plot_commercial_counts(pop_counts)
-  # p1
+  p1 <- plot_commercial_counts(pop_counts)
+  p1
   
 }
 

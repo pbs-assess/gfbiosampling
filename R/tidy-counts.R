@@ -3,6 +3,10 @@ tidy_commercial_counts <- function (data,
                                     years = NULL,
                                     ageing_method_codes = NULL) {
 
+  # Summarise silently ---------------------------------------------------------
+
+  options(dplyr.summarise.inform = FALSE)
+
   # Define area factor levels --------------------------------------------------
 
   area_levels <- c("5E", "5CD", "5AB", "3CD", "4B", "Total")
