@@ -1,0 +1,44 @@
+---
+title: "plot-commercial-counts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plot-commercial-counts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gfplot)
+library(magrittr)
+source("../R/tidy-counts.R")
+source("../R/plot-commercial-counts")
+
+```
+
+# Plot commercial counts
+```{r plot-counts}
+
+if (FALSE) {
+  # Read Pacific Ocean Perch data
+  pop <- readr::read_rds("~/data-cache-april-2022/pacific-ocean-perch.rds")
+  pop_comm_samples <- pop$commercial_samples
+  # Tidy counts by areas
+  pop_counts <- tidy_commercial_counts(
+    pop_comm_samples,
+    years = 2003:2021
+  )
+  # Plot counts
+  # p1 <- plot_commercial_counts(pop_counts)
+  # p1
+  
+}
+
+
+```
