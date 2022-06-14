@@ -1,0 +1,31 @@
+#+title: Groundfish Biosampling Review
+#+options: author:nil
+#+options: toc:nil
+#+options: num:nil
+#+latex_header: \author[1]{Luke Rogers}
+#+latex_header: \author[2]{...}
+#+latex_header: \affil[1]{Pacific Biological Station, Fisheries and Oceans Canada, Nanaimo, British Columbia, V9T 6N7, Canada}
+#+latex_header: \affil[2]{...}
+#+latex_class: manuscript
+\linenumbers
+
+\noindent Keywords: keywords
+
+
+* Notes
+
+
+  
+* Questions
+
+
+* Abstract
+* Introduction
+* Methods
+* Results
+* Discussion
+* Acknowledgements
+
+  bibliographystyle:plainnat
+  bibliography:refs.bib
+* Supplementary Information
