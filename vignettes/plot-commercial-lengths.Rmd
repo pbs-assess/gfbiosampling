@@ -17,8 +17,8 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(gfplot)
 library(magrittr)
-source("../R/tidy-comps.R")
-source("../R/plot-commercial-lengths.R")
+source(here::here("R", "tidy-comps.R"))
+source(here::here("R", "plot-commercial-lengths.R"))
 
 ```
 
@@ -39,7 +39,20 @@ if (FALSE) {
   # Plot length frequencies
   p1 <- plot_commercial_lengths(pop_lengths)
   p1
-  
+  # Plot values
+  plot_name <- "pop-commercial-lengths"
+  file_type <- ".png"
+  width <- 190
+  height <- 120
+  dpi <- 300
+  # Save ggplot
+  ggplot2::ggsave(
+    here::here("ms", "figs", paste0(plot_name, file_type)),
+    width = width,
+    height = height,
+    units = "mm",
+    dpi = dpi
+  )
 }
 
 

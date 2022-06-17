@@ -24,9 +24,13 @@ _targets/
 *.o
 *.so
 
+# Slides
+*.ppt
+*.pptx
+
 # Figures
 *.png
-*.pdf
+
 
 # Emacs
 *.org#
